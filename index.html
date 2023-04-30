@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculation program</title>
+</head>
+<body>
+	<label for="payment">Payment type:</label>
+	<select id="payment" name="payment">
+		<option value="cash">Cash</option>
+		<option value="credit">Credit</option>
+	</select><br>
+
+	<label for="surgery_type">Surgery type:</label>
+	<select id="surgery_type" name="surgery_type">
+		<option value="1st">First surgery</option>
+		<option value="2nd">Second surgery</option>
+		<option value="3rd">Third surgery</option>
+	</select><br>
+
+	<label for="surgeon_type">Surgeon type:</label>
+	<select id="surgeon_type" name="surgeon_type">
+		<option value="same">Same surgeon</option>
+		<option value="different">Different surgeon</option>
+	</select><br>
+
+	<label for="input">Surgeon fee:</label>
+	<input type="number" id="input" name="input"><br>
+
+	<label for="output1">Anathesia:</label>
+	<input type="text" id="output1" name="output1" disabled><br>
+
+	<label for="output2">OT_Charges:</label>
+	<input type="text" id="output2" name="output2" disabled><br>
+
+	<label for="output3">OT_Gas:</label>
+	<input type="text" id="output3" name="output3" disabled><br>
+
+	<script>
+		// get input and output elements
+		var input = document.getElementById("input");
+		var output1 = document.getElementById("output1");
+		var output2 = document.getElementById("output2");
+		var output3 = document.getElementById("output3");
+		var payment = document.getElementById("payment");
+		var surgery_type = document.getElementById("surgery_type");
+		var surgeon_type = document.getElementById("surgeon_type");
+
+		// add event listener to input element
+		input.addEventListener("input", function() {
+			// calculate 33%, 50% and 30% of the input value
+			var value = input.value;
+			var result1 = value * 0.33;
+			var result2 = value * 0.50;
+			var result3 = value * 0.30;
+
+			var discount = 0;
+if (payment.value === "cash") {
+  if (surgery_type.value === "1st") {
+    if (surgeon_type.value === "same") {
+      var value = input.value;
+      var result1 = value * 0.33;
+      var result2 = value * 0.52;
+      var result3 = value * 0.30;
+      discount = 0.10; // set discount to 10%
+    }
+    else {
+      var value = input.value;
+      var result1 = value * 0.33;
+      var result2 = value * 0.52;
+      var result3 = value * 0.30;
+    }
+  }
+  else if (surgery_type.value === "2nd") {
+    if (surgeon_type.value === "same") {
+      var value = input.value;
+      var result1 = value * 0.165;
+      var result2 = value * 0.26;
+      var result3 = value * 0.15;
+      discount = 0.05; // set discount to 5%
+    }
+    else {
+      var value = input.value;
+      var result1 = value * 0.165;
+      var result2 = value * 0.26;
+      var result3 = value * 0.15;
+    }
+  }
+  else if (surgery_type.value === "3rd") {
+    if (surgeon_type.value === "same") {
+      var value = input.value;
+      var result1 = value * 0.165;
+      var result2 = value * 0.26;
+      var result3 = value * 0.15;
+      discount = 0.05; // set discount to 5%
+    }
+    else {
+      var value = input.value;
+      var result1 = value * 0.165;
+      var result2 = value * 0.26;
+      var result3 = value * 0.15;
+    }
+  }
+} 
+
+			// set the output values to the results
+			output1.value = result1;
+			output2.value = result2;
+			output3.value = result3;
+		});
+
+		// add event listener to payment element
+		payment.addEventListener("change", function() {
+			// trigger input event to recalculate outputs when payment method changes
+			input.dispatchEvent(new Event("input"));
+		});
+	// add event listener to payment element
+		payment.addEventListener("change", function() {
+			// trigger input event to recalculate outputs when payment method changes
+			input.dispatchEvent(new Event("input"));
+		});
+	</script>
+</body>
+</html>
+		
